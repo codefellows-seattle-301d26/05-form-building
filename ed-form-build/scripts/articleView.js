@@ -80,17 +80,7 @@ articleView.setTeasers = () => {
 // This function is called from the script tag in "new.html". It is called from there to build the content for the new html page. We only want it to run on "new.html" so it sits in script tags in new.html rather than in a document.ready function like when we just had one html page.
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-  $('.tab-content').show()
-
-  // TODO: The new articles we create will be copy/pasted into our source data file.
-  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
-  $('#article-export').hide()
-  $('#article-json').on('focus', function(){
-    this.select();
-  });
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#article-form').on('change', 'input', 'textarea', articleView.create)
-  
+  //$('.tab-content').show()
   articleView.handleNewNav = () => {
     $('.main-nav').on('click', '.tab', function() {
       $('.tab-content').hide();
@@ -100,6 +90,15 @@ articleView.initNewArticlePage = () => {
     $('.main-nav .tab:first').click();
   };
   articleView.handleNewNav();
+
+  // TODO: The new articles we create will be copy/pasted into our source data file.
+  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
+  $('#article-export').hide()
+  $('#article-json').on('focus', function(){
+    this.select();
+  });
+  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  $('#article-form').on('change', 'input', 'textarea', articleView.create)
 };
 
 articleView.create = () => {
@@ -117,8 +116,6 @@ articleView.create = () => {
     body: $('#article-body').val(),
     publishedOn: $('#article-pubdate:checked').length ? new Date() : null,
   })
-
-  
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml())
