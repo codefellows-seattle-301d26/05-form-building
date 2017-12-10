@@ -77,12 +77,12 @@ articleView.setTeasers = () => {
 // PUT YOUR RESPONSE HERE
 articleView.initNewArticlePage = () => {
   $('.tab-content').show();
-  $('article-export').hide();
+  $('#article-export').hide();
   $('#article-json').on('focus', function(){
     this.select();
   });
 
-  $('article-form').on('change', 'input, textarea', articleView.create)
+  $('#article-form').on('change', 'input, textarea', articleView.create)
 };
 
 articleView.create = () => {
@@ -97,15 +97,12 @@ articleView.create = () => {
     body: $('#article-body').val(),
     publishedOn: $('#article-pubdate:checked').length ? new Date() : null,
   })
-  console.log(article);
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 
+  $('#articles').append(article.toHtml())
 
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  $('pre code').each((i, block) => hljs.hightlightBlock(block));
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  $('#article-export').show().find('#article-export').val(JSON.stringify(article))
 };
 
 // COMMENT: Where is this function called? Why?
