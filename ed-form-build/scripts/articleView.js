@@ -88,9 +88,18 @@ articleView.initNewArticlePage = () => {
   $('#article-json').on('focus', function(){
     this.select();
   });
-
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
   $('#article-form').on('change', 'input', 'textarea', articleView.create)
+  
+  articleView.handleNewNav = () => {
+    $('.main-nav').on('click', '.tab', function() {
+      $('.tab-content').hide();
+      $(`#${$(this).data('content')}`).fadeIn();
+    });
+  
+    $('.main-nav .tab:first').click();
+  };
+  articleView.handleNewNav();
 };
 
 articleView.create = () => {
@@ -108,6 +117,8 @@ articleView.create = () => {
     body: $('#article-body').val(),
     publishedOn: $('#article-pubdate:checked').length ? new Date() : null,
   })
+
+  
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml())
