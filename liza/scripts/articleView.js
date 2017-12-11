@@ -114,6 +114,7 @@ articleView.create = () => {
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#article-export').show().find('#article-json').val(JSON.stringify(article))
+  console.log ('article',article)
 };
 
 // COMMENT: Where is this function called? Why?
