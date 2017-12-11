@@ -49,13 +49,21 @@
 
       <section id="write" class="tab-content">
         <h1>Create New Article</h1>
-        <!-- TODO: Set up a form to accept user input for a new blog article. Remember that we need:
+        <!-- DONE: Set up a form to accept user input for a new blog article. Remember that we need:
            1. Article title
            2. Article body
            3. Article author
            4. Author's URL
            5. Article category
            6. Some way to know if this article is a draft or is published -->
+        <form id="article-form">
+          <input placeholder="title" id="article-title" type="text" required>
+          <textarea placeholder="body" name="" id="article-body" cols="30" rows="10" required></textarea>
+          <input placeholder="author" id="article-author" type="text">
+          <input placeholder="url" id="article-url" type="url" pattern="^((https):\/\/)?(www\.)?[a-z0-9]+\.[a-z]+$">
+          <input placeholder="category" id="article-category" type="text">
+          <label for=""><input id="article-pubdate" type="checkbox">Published</label>
+        </form>
       </section>
 
       <section id="articles" class="tab-content">
