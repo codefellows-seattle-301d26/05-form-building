@@ -55,7 +55,6 @@ articleView.handleMainNav = () => {
     $('.tab-content').hide();
     $(`#${$(this).data('content')}`).fadeIn();
   });
-
   $('.main-nav .tab:first').click();
 };
 
@@ -80,13 +79,12 @@ articleView.setTeasers = () => {
 // This function is called from the script tag in "new.html". It is called from there to build the content for the new html page. We only want it to run on "new.html" so it sits in script tags in new.html rather than in a document.ready function like when we just had one html page.
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-  //$('.tab-content').show()
+  $('.tab-content').show()
   articleView.handleNewNav = () => {
     $('.main-nav').on('click', '.tab', function() {
       $('.tab-content').hide();
       $(`#${$(this).data('content')}`).fadeIn();
     });
-  
     $('.main-nav .tab:first').click();
   };
   articleView.handleNewNav();
