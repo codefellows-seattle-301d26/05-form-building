@@ -74,7 +74,11 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This function initializes all the relevant code for the new article page.
+// Article export is hidden and then their is an event listener configured to
+// the #article-form id so when a user changes anything event delegation will
+// occur and the preview will be displayed for the article after it is created
+// using the provided information currently residing in the form.
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
 
