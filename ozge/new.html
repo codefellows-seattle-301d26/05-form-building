@@ -5,31 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lab 5</title>
     <link rel="stylesheet" href="vendor/styles/normalize.css">
-    <link rel="stylesheet" href="vendor/styles/icons.css">
+    <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
-    <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-
+    <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting
+      **We added default.css and railscasts.css to use hljs library -->
     <link rel="stylesheet" href="vendor/styles/default.css">
+    <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="vendor/styles/railscasts.css">
-
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
-    <script id="article-template" type="text/x-handlebars-template">
-      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+    <script id="article-data" type="text/x-handlebars-template">
+      <article data-author="{{author}}" data-category="{{category}}">
         <header>
           <h1>{{title}}</h1>
           <div class="byline">
-            By <address><a href="{{authorUrl}}">{{author}}</a></address>
-            {{publishStatus}}
+            By <address><a href="">{{author}}</a></address>
+            <time datetime="2000-01-01">{{publishStatus}}</time>
           </div>
         </header>
         <section class="article-body">{{{body}}}</section>
-        <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
-
   </head>
+    </head>
   <body>
     <header class="site-header clearfix">
       <section class="heading-group-h1 pull-left">
@@ -58,14 +57,13 @@
            4. Author's URL
            5. Article category
            6. Some way to know if this article is a draft or is published -->
-        <form id="article-form">
-          <input placeholder="title" id="article-title" type="text" required>
-          <textarea placeholder="body" name="" id="article-body" cols="30" rows="10" required></textarea>
-          <input placeholder="author" id="article-author" type="text">
-          <input placeholder="url" id="article-url" type="url" pattern="\w+?\.\w+@\w+\.\w+">
-          <input placeholder="category" id="article-category" type="text">
-          <label for=""><input id="article-pubdate" type="checkbox">Published</label>
-        </form>
+
+           <form id ="article-form">
+           <input placeHolder="title" id="article-title" type="text">
+           <textarea placeHolder="body" name ="" id="article-body" cols="30" rows="10" required></textarea>
+           <input placeHolder="author" id="article-author" type="text">
+           <input placeHolder="url" id="article-url" type="url" pattern='\w+?'>
+           <input placeHolder="category" id="article-category" type="text">
       </section>
 
       <section id="articles" class="tab-content">
@@ -74,7 +72,8 @@
 
       <section id="article-export">
         <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
-        <input id="article-json" type="text" readonly>
+         <input id="article-json" type="text" >
+
       </section>
 
     </main>
@@ -82,22 +81,25 @@
       &copy; 2017 Code Fellows | Static Blog | Happy Ipsum!
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <!-- NOTE (stretch goal): Include script tags for 3rd party libraries to enable Markdown rendering and code syntax highlighting. Use the minified CDN. Keep in mind that if we want these features to render properly on our main blog page (index.html) that we'll need to add those scripts over there, too. -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.7/marked.min.js"></script>
 
-    <script src="scripts/blogArticles.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+      <!-- NOTE (stretch goal): Include script tags for 3rd party libraries to enable Markdown rendering and code syntax highlighting. Use the minified CDN. Keep in mind that if we want these features to render properly on our main blog page (index.html) that we'll need to add those scripts over there, too. -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.7/marked.min.js"></script>
+
+    <script src="scripts/blogArticles.js" ></script>
     <script src="scripts/article.js"></script>
-    <script src="scripts/articleView.js"></script>
-    <script>
-      // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
-      // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
-      //  Hint: Look in articleView.js for a function that does this.
-      articleView.initNewArticlePage()
+    <script src="scripts/articleView.js" type="text/javascript"></script>
+
+     <script>
+        articleView.initNewArticlePage()
+
+        // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
+        // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
+        //  Hint: Look in articleView.js for a function that does this.
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // We need this function to show new article and and making the input area and text area updatable.
     </script>
   </body>
 </html>
