@@ -128,11 +128,15 @@ articleView.create = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This method configures all the code necessary for the index/home page. It
+// initializes all the filters for author and category, sets up the main nav,
+// populates all the articles from the rawData and configures teasers for the
+// articles to avoid displaying all the content unti lthe user asks for it.
 articleView.initIndexPage = () => {
+  articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
-  articleView.handleMainNav();
+  articleView.handleNav();
   articleView.setTeasers();
 };
