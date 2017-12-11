@@ -90,8 +90,14 @@ articleView.initNewArticlePage = () => {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  // DONE: Add an event handler to update the preview and the export field if any inputs change.
+  $('#article-form').on('change', 'input, textarea', articleView.create);
 
+  // Renamed the handle main nav since we are using it for the new article
+  //  here as well. The Preview id is still called articles which I would most
+  // likely update in the future, but currently changing it breaks other
+  // functionality.
+  articleView.handleNav();
 };
 
 articleView.create = () => {
