@@ -87,12 +87,13 @@ articleView.initNewArticlePage = () => {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#article-form').on('change', 'input, textarea', articleView.create)
+  $('#article-form').on('change', 'input, textarea', articleView.create);
+
 };
 
 articleView.create = () => {
   let article;
-  // TODO: Set up a variable to hold the new article we are creating.
+  // DONE: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty();
 
@@ -120,6 +121,7 @@ articleView.create = () => {
 // COMMENT: Where is this function called? Why?
 // It is called on the index.html page. To display the content.
 articleView.initIndexPage = () => {
+  // articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
