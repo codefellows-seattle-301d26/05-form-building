@@ -97,23 +97,25 @@ articleView.create = () => {
 
 
   // TODO: Instantiate an article based on what's in the form fields:
-  article = new Article({
+  let article = new Article({
     author: $('#article-author').val(),
     authorUrl: $('#article-url').val(),
     title: $('#article-title').val(),
     category: $('#article-category').val(),
     body: $('#article-body').val(),
     publishedOn:  $('#article-pubdate:checked').length ? new Date() : null,
-  })
+  });
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
+  $('articles').append(article.toHtml());
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
-
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  $('#article-export').show().find('#article-json').val(JSON.stringify(article));
 };
 
 // COMMENT: Where is this function called? Why?
