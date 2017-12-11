@@ -34,6 +34,10 @@ articleView.handleAuthorFilter = () => {
   });
 };
 
+// when we build our object published on needs to be refactored, use a sudo selector $ n('#article-pubdate:checked').length ? new Date(): null.
+
+// $('#articles').append(article.toHtml());
+
 articleView.handleCategoryFilter = () => {
   $('#category-filter').on('change', function() {
     if ($(this).val()) {
@@ -105,7 +109,7 @@ articleView.create = () => {
   $('pre code').each();
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+$('pre code').each(i,block) => hljs.highlight(block));
 };
 
 // COMMENT: Where is this function called? Why?
