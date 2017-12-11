@@ -101,21 +101,30 @@ articleView.initNewArticlePage = () => {
 };
 
 articleView.create = () => {
-  // TODO: Set up a variable to hold the new article we are creating.
+  // DONE: Set up a variable to hold the new article we are creating.
+  let article;
+
   // Clear out the #articles element, so we can put in the updated preview
+  $('#articles').empty();
 
+  // DONE: Instantiate an article based on what's in the form fields:
+  article = new Article({
+    author: $('#article-author').val(),
+    authorUrl: $('#article-url').val(),
+    title: $('#article-title').val(),
+    category: $('#article-category').val(),
+    body: $('#article-body').val(),
+    publishedOn: $('#article-pubdate:checked').length ? new Date() : null,
+  });
 
-  // TODO: Instantiate an article based on what's in the form fields:
+  // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
+  $('#articles').append(article.toHtml());
 
+  // DONE: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+  $('pre code').each((i, block) => hljs.highlightBlock(block));
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
-
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
-
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#article-export').show().find('#article-json').val(JSON.stringify(article));
 };
 
 // COMMENT: Where is this function called? Why?
