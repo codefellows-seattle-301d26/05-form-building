@@ -87,16 +87,24 @@ articleView.initNewArticlePage = () => {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-
+  $('#article-form').on('change', 'input', 'textarea', articleView.create);
 };
 
 articleView.create = () => {
   // TODO: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
+  $('#articles').empty();
 
 
   // TODO: Instantiate an article based on what's in the form fields:
-
+  article = new Article({
+    author: $('#article-author').val(),
+    authorUrl: $('#article-url').val(),
+    title: $('#article-title').val(),
+    category: $('#article-category').val(),
+    body: $('#article-body').val(),
+    publishedOn:  $('#article-pubdate:checked').length ? new Date() : null,
+  })
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 
