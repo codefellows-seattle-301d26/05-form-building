@@ -123,6 +123,7 @@ articleView.create = () => {
 // on the index.html page via the script tag there.
 
 articleView.initIndexPage = () => {
+  articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
