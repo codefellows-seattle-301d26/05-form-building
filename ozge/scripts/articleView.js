@@ -116,15 +116,16 @@ articleView.create = () => {
   });
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#article-export').show();
-  $('#article-json').val(JSON.stringfy(article));
-  //$('article-export').show().find('#article-json').val(JSON.stringify(article));
+  //$('#article-export').show();
+  //$('#article-json').val(JSON.stringfy(article));
+  $('article-export').show().find('#article-json').val(JSON.stringify(article));
 
 };
 
 // COMMENT: Where is this function called? Why?
 // This function called in index.htm to initialize the needed functions.
 articleView.initIndexPage = () => {
+  articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
