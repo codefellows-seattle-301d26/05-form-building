@@ -21,7 +21,7 @@ Handlebars
 <!-- Use this are to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 12-10-2017 9:15am - Initial commit.
-12-10-2017 09:45am  - Initial instaal of forms.
+12-10-2017 09:50am  - Initial instaal of forms.
 12-10-2017 10:00am - Add tab nav stretch goal.
 12-10-2017 10:50am - Add highlight and marked script tags to index.
 12-10-2017 11:50am - Fix tab nav
