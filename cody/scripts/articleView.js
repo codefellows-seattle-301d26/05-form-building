@@ -121,7 +121,7 @@ articleView.create = () => {
 // COMMENT: Where is this function called? Why?
 // It is called on the index.html page. To display the content.
 articleView.initIndexPage = () => {
-  // articles.forEach(article => $('#articles').append(article.toHtml()));
+  articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
