@@ -2,6 +2,7 @@
 
 let articleView = {};
 
+//I believe this block of code is to populate the drop menu(filter), with article title/author
 articleView.populateFilters = () => {
   $('article').each(function() {
     if (!$(this).hasClass('template')) {
@@ -74,13 +75,11 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This function is called in the new.html to dynamically render new article content to the DOM
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
 
-//I added
 ('tab-content').show();
-
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -97,11 +96,11 @@ $('#article-form').on('change', 'input, textarea', articleView.create)
 
 articleView.create = () => {
   // TODO: Set up a variable to hold the new article we are creating.
-  //ADDING HERE
   let article
   //the below code clears clears the #articles ID so we ca update preview
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty()
+
   
 
   // TODO: Instantiate an article based on what's in the form fields:
@@ -126,13 +125,9 @@ $('#articles').append(article.tHhtml())
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
 $('#article-export').show().find('#article-json').val(Json.stringify(article))
-// $('#article-json')
-
 };
-//the json above prints
-
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This is called in the index.html to publish new data with all the original data
 articleView.initIndexPage = () => {
   articleView.populateFilters();
   articleView.handleCategoryFilter();
