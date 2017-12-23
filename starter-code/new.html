@@ -10,11 +10,28 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link rel="">
+    <link rel="stylesheet" href"vendor/styles/railscasts.css">
 <!-- 1 hour and 15 minutes in the video is where Scott got the source link -->
 
     <!-- highlightjs.org is the source -->
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+
+        <!--added handlebars to render article content to the DOM using .js  -->
+
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
+    <!--added handlebars to render article content to the DOM using .js  -->
     </head>
   <body>
     <header class="site-header clearfix">
