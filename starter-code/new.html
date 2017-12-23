@@ -31,8 +31,9 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
+  </head>
     <!--added handlebars to render article content to the DOM using .js  -->
-    </head>
+    
   <body>
     <header class="site-header clearfix">
       <section class="heading-group-h1 pull-left">
@@ -56,7 +57,7 @@
         <h1>Create New Article</h1>
         <form id="article-form">
             
-        <input placeholder="title" id="article-title" type="text" required></input>
+          <input placeholder="title" id="article-title" type="text" required></input>
         <!-- TODO: Set up a form to accept user input for a new blog article. Remember that we need:
            1. Article title
            2. Article body
@@ -65,9 +66,12 @@
            5. Article category
            6. Some way to know if this article is a draft or is published -->
              <!-- <input placeholder="create place holders for every object constructor" id = "make ID's for each object constructor in seperate input tags" type = "text" -->
-             <textarea placeholder="body" id="article-body"cols="30" rows="10" required></textarea>
-             <!-- the rest of the inputs here... -->
-             </form>
+          <textarea placeholder="body" id="article-body"cols="30" rows="10" required></textarea>
+          <input placeholder= "author" id="article-author" type="text">
+          <input placeholder= "url" id="article-url" type="url">
+          <input placeholder= "category" id="article-body" type="text">
+          <label for=""><input placeholder= "pubdate" id="article-pubdate" type="checkbox">Published</label>             
+        </form>
       </section>
 
       <section id="articles" class="tab-content">
