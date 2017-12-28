@@ -77,13 +77,18 @@ articleView.setTeasers = () => {
 // COMMENT: Where is this function called? Why?
 // This function is called in the new.html to dynamically render new article content to the DOM
 articleView.initNewArticlePage = () => {
-  ('tab-content').show();  
-  ('#article-export').hide();
-  $('#article-json').on('focus', function(){
-    this.select();
-  });
+  $('.tab-content').show(); 
+  $('#article-export').hide();
+  $('#article-form').on('change', 'input, textarea', articleView.create);
+  $('#article-form').on('submit', articleView.submit);
 
-  $('#article-form').on('change', 'input, textarea', articleView.create)
+  // ('.tab-content').show();  
+  // ('#article-export').hide();
+  // $('#article-json').on('focus', function(){
+  //   this.select();
+  // });
+
+  $('#article-form').on('change', 'input', 'textarea', articleView.create)
   };
 
 articleView.create = () => {
@@ -99,7 +104,7 @@ article = new Article({
   publishedOn: $('#article-pubdate:checked').length? new Date () : null,
 })
 
-$('#articles').append(article.tHhtml())
+$('#articles').append(article.toHtml('#article-template'))
 $('pre code').each();((i, block) => hljs.highlightBlock(block));
 $('#article-export').show().find('#article-json').val(Json.stringify(article))
 };
